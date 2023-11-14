@@ -19,13 +19,25 @@ export default async function Day({ value }) {
 
   return (
     <section className={styles.imgSection}>
-      <Img src={data.hdurl} />
-      <p>{data?.explanation}</p>
+      <p className={styles.description}>{data?.explanation}</p>
+      <div className={styles.wrapper}>
+        <div className={styles.originalImage}>
+          <img src={data.hdurl} />
+          <p>Original image</p>
+        </div>
+        <div className={styles.processedImages}>
+          <div>
+            <Img src={data.hdurl} />
+            <p>Imgproxy</p>
+          </div>
+          <div>
+            <Img src={data.hdurl} />
+            <p>NextImage</p>
+          </div>
+        </div>
+      </div>
       {data?.copyright && (
-        <>
-          <p>Copyright</p>
-          <p>{data?.copyright}</p>
-        </>
+        <p className={styles.copyrigth}>Copyright {data?.copyright}</p>
       )}
     </section>
   );

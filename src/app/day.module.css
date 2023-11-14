@@ -4,3 +4,46 @@
   align-items: center;
   max-width: 50vw;
 }
+
+.description,
+.copyrigth,
+.wrapper p {
+  color: #1f306e;
+}
+
+.description {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.copyrigth,
+.wrapper p {
+  font-size: 12px;
+}
+
+.copyrigth {
+  align-self: flex-start;
+  line-height: 1.5;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.wrapper p {
+  margin-top: 5px;
+}
+
+.originalImage,
+.processedImages {
+  max-width: 47%;
+}
+
+.originalImage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

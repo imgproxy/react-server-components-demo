@@ -1,5 +1,41 @@
 .main {
   display: flex;
   justify-content: center;
+  max-width: 1440px;
   width: 100%;
+  margin-top: 55px;
+}
+
+.menu {
+  margin-right: 45px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.list li:not(:first-child) {
+  margin-top: 10px;
+}
+
+.link {
+  text-decoration: none;
+  color: #1f306e;
+  transition-duration: 0.3s;
+  transition-property: color;
+  cursor: pointer;
+}
+
+.link:hover:not(.linkActive) {
+  color: #c7417b;
+}
+
+.linkActive {
+  color: #f5487f;
+  cursor: default;
 }
