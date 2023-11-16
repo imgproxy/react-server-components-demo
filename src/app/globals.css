@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   display: flex;
   justify-content: center;
@@ -7,4 +11,37 @@ body {
 
 p {
   margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #1f306e;
+}
+
+pre {
+  margin: 0;
+  font-size: 14px;
+  color: #1f306e;
+  background-color: #ebf1f4;
+  border-radius: 2px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: 600;
+  color: #553772;
+}
+
+h2 {
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+ul {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
 }

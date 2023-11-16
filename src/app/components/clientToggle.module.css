@@ -1,0 +1,45 @@
+.toggle {
+  display: flex;
+  align-self: center;
+  margin-top: 30px;
+}
+
+.input {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  white-space: nowrap;
+  clip: rect(0 0 0 0);
+}
+
+.input:checked + .label {
+  background-color: #c7417b;
+  opacity: 1;
+}
+
+.label {
+  padding: 5px 10px;
+  color: #ffffff;
+  background-color: #1f306e;
+  opacity: 0.6;
+  transition-duration: 0.3s;
+  transition-property: background-color, opacity;
+  cursor: pointer;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+li + li .label {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.label:hover {
+  opacity: 0.9;
+}

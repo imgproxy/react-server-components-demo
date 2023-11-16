@@ -1,0 +1,58 @@
+.list {
+  display: flex;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.item {
+  margin-right: 10px;
+  margin-bottom: 20px;
+  color: #1f306e;
+}
+
+.input {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  white-space: nowrap;
+  clip: rect(0 0 0 0);
+}
+
+.input:checked + .label {
+  background-color: #c7417b;
+  opacity: 1;
+}
+
+.label {
+  padding: 5px 10px;
+  color: #ffffff;
+  background-color: #1f306e;
+  border-radius: 5px;
+  opacity: 0.6;
+  transition-duration: 0.3s;
+  transition-property: opacity, background-color;
+  cursor: pointer;
+}
+
+.label:hover {
+  opacity: 0.9;
+}
+
+.summary {
+  margin-top: 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.code {
+  padding: 10px 20px;
+  white-space: pre-wrap;
+}
+
+.code p {
+  font-size: 14px;
+}
