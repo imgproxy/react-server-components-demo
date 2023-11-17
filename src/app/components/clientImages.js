@@ -1,12 +1,27 @@
 'use client';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Image from 'next/image';
 import ClientToggle from './clientToggle';
 import Options from './options';
+import ClientSizeSection from './clientSizeSection';
+import { useSizes } from './clientUtils';
 import styles from './clientImages.module.css';
 
-export default function ClientImages({ link, copyright, options, children }) {
+export default function ClientImages({
+  link,
+  copyright,
+  options,
+  imgproxySize,
+  originalSize,
+  children,
+}) {
   const [active, setActive] = useState('imgproxy');
+  const ref = useRef();
+  const { sizes, ready } = useSizes();
+
+  if (!ready) return null;
+  const sizeNI = sizes[ref.current?.src];
+  console.log(sizes);
 
   const getCopyright = () => {
     if (copyright) {
@@ -24,7 +39,14 @@ export default function ClientImages({ link, copyright, options, children }) {
             {children}
             {getCopyright()}
           </div>
-          <div className={styles.textWrap}>
+          <div className={styles.textWrapper}>
+            {imgproxySize && (
+              <ClientSizeSection
+                oSize={originalSize}
+                iSize={imgproxySize}
+                nSize={sizeNI}
+              />
+            )}
             <p>
               Imgproxy offers a wide range of advanced image manipulation
               features, making it a versatile tool for developers. It supports
@@ -42,6 +64,7 @@ export default function ClientImages({ link, copyright, options, children }) {
           <div className={styles.imageWrapper}>
             <Image
               src={link}
+              ref={ref}
               layout="fill"
               objectFit="contain"
               alt="Image of the day"
@@ -49,6 +72,13 @@ export default function ClientImages({ link, copyright, options, children }) {
             {getCopyright()}
           </div>
           <div className={styles.textWrapper}>
+            {sizeNI && (
+              <ClientSizeSection
+                oSize={originalSize}
+                iSize={imgproxySize}
+                nSize={sizeNI}
+              />
+            )}
             <p>Next image has only a few parameters for image processing:</p>
             <p>
               <span className={styles.code}>width</span>,{' '}

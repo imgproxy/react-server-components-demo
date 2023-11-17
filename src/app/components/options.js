@@ -37,7 +37,7 @@ export default function Options({ options }) {
         <summary className={styles.summary}>Show code</summary>
         <pre className={styles.code}>
           <p>{`import { generateImageUrl } from '@imgproxy/imgproxy-node';`}</p>
-          <p>{`const { ENC_KEY, ENC_IV, SIGN_KEY, SIGN_SALT, ENDPOINT } = process.env;`}</p>
+          <p>{`const { SIGN_KEY, SIGN_SALT, ENDPOINT } = process.env;`}</p>
           <p>{`const imgproxySrc = generateImageUrl({`}</p>
           <p>{`  endpoint: ENDPOINT,`}</p>
           <p>{`  url: {`}</p>
@@ -45,8 +45,6 @@ export default function Options({ options }) {
           <p>{`    displayAs: 'base64',`}</p>
           <p>{`  },`}</p>
           <p>{`  options: ${JSON.stringify(options[active])},`}</p>
-          <p>{`  encryptKey: ENC_KEY,`}</p>
-          <p>{`  encryptIV: ENC_IV,`}</p>
           <p>{`  salt: SIGN_SALT,`}</p>
           <p>{`  key: SIGN_KEY,`}</p>
           <p>{`});`}</p>

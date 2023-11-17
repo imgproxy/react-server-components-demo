@@ -1,4 +1,4 @@
-import Img from './image';
+import getImgproxyData from '../getImgproxyData';
 import styles from './day.module.css';
 import ClientImages from './clientImages';
 
@@ -18,7 +18,7 @@ const IMGPROXY_OPTIONS = {
   crop: {
     width: 500,
     format: 'webp',
-    crop: { width: 400, height: 500, gravity: 'sm' },
+    crop: { width: 400, gravity: 'sm' },
   },
   sharpen: {
     width: 500,
@@ -49,14 +49,24 @@ export default async function Day({ value }) {
       </section>
     );
 
+  const imgproxyData = await getImgproxyData(
+    data?.hdurl,
+    IMGPROXY_OPTIONS.format_webp
+  );
+
+  const resUrl = await fetch(data?.hdurl, { method: 'head' });
+  const bytes = resUrl.headers.get('content-length');
+
   return (
     <section className={styles.imgSection}>
       <ClientImages
         link={data?.hdurl}
         copyright={data?.copyright}
         options={IMGPROXY_OPTIONS}
+        imgproxySize={imgproxyData.size}
+        originalSize={bytes}
       >
-        <Img src={data?.hdurl} />
+        <img src={imgproxyData.url} />
       </ClientImages>
     </section>
   );

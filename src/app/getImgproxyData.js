@@ -1,8 +1,8 @@
 import { generateImageUrl } from '@imgproxy/imgproxy-node';
 
-const { ENC_KEY, ENC_IV, SIGN_KEY, SIGN_SALT, ENDPOINT } = process.env;
+const { ENC_KEY, SIGN_KEY, SIGN_SALT, ENDPOINT } = process.env;
 
-export default function Image({ src }) {
+export default async function getImgproxyData(src) {
   const imgproxySrc = generateImageUrl({
     endpoint: ENDPOINT,
     url: {
@@ -11,9 +11,14 @@ export default function Image({ src }) {
     },
     options: { width: 500, format: 'webp' },
     encryptKey: ENC_KEY,
-    encryptIV: ENC_IV,
     salt: SIGN_SALT,
     key: SIGN_KEY,
   });
-  return <img src={imgproxySrc} />;
+  const res = await fetch(imgproxySrc);
+  const bytes = res.headers.get('content-length');
+
+  return {
+    url: imgproxySrc,
+    size: bytes,
+  };
 }

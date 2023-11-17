@@ -4,6 +4,11 @@
   min-height: 370px;
   margin-top: 20px;
   margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    margin-top: 15px;
+  }
 }
 
 .imageWrapper {
@@ -14,20 +19,30 @@
   flex-shrink: 0;
   width: 500px;
   min-height: 300px;
+
+  @media (max-width: 768px) {
+    order: 2;
+    width: 100%;
+  }
 }
 
 .imageWrapper img {
   position: relative !important;
+
+  @media (max-width: 768px) {
+    width: inherit;
+  }
 }
 
 .textWrapper {
-  margin-top: 40px;
-  margin-left: 60px;
-}
-
-.textWrap {
   margin-top: 10px;
   margin-left: 60px;
+
+  @media (max-width: 768px) {
+    order: 1;
+    margin-bottom: 20px;
+    margin-left: 0;
+  }
 }
 
 .textWrapper p {

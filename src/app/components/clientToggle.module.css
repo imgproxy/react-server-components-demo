@@ -2,6 +2,10 @@
   display: flex;
   align-self: center;
   margin-top: 30px;
+
+  @media (max-width: 650px) {
+    align-self: flex-start;
+  }
 }
 
 .input {

@@ -4,16 +4,33 @@
   max-width: 1440px;
   width: 100%;
   margin: 55px 20px 20px;
+
+  @media (max-width: 768px) {
+    margin: 25px 20px 20px;
+  }
 }
 
 .title {
   margin-bottom: 12px;
 }
 
+.wrapper {
+  display: flex;
+  margin-top: 35px;
+
+  @media (max-width: 650px) {
+    flex-direction: column;
+    margin-top: 15px;
+  }
+}
+
 .menu {
   flex-shrink: 0;
-  margin-top: 38px;
   margin-right: 45px;
+
+  @media (max-width: 650px) {
+    margin-right: 0;
+  }
 }
 
 .list {
@@ -21,10 +38,22 @@
   flex-direction: column;
   justify-content: center;
   margin-top: 10px;
+
+  @media (max-width: 650px) {
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
 }
 
 .list li:not(:first-child) {
   margin-top: 10px;
+
+  @media (max-width: 650px) {
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
 }
 
 .link {
@@ -33,17 +62,51 @@
   transition-duration: 0.3s;
   transition-property: color;
   cursor: pointer;
+
+  @media (max-width: 650px) {
+    padding: 5px 10px;
+    color: #ffffff;
+    background-color: #1f306e;
+    border-radius: 5px;
+    opacity: 0.8;
+  }
 }
 
 .link:hover:not(.linkActive) {
   color: #c7417b;
+
+  @media (max-width: 768px) {
+    color: #1f306e;
+  }
+
+  @media (max-width: 650px) {
+    color: #ffffff;
+  }
 }
 
 .linkActive {
   color: #f5487f;
   cursor: default;
+
+  @media (max-width: 650px) {
+    color: #ffffff;
+    background-color: #c7417b;
+    opacity: 1;
+  }
+}
+
+.textWrapper {
+  @media (max-width: 650px) {
+    margin-top: 20px;
+  }
 }
 
 .intro + .intro {
   margin-top: 15px;
+}
+
+.noDay {
+  margin-top: 30px;
+  font-size: 20px;
+  font-weight: 500;
 }
