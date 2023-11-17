@@ -13,15 +13,13 @@ export default function ClientImages({
   options,
   imgproxySize,
   originalSize,
+  preset,
   children,
 }) {
   const [active, setActive] = useState('imgproxy');
   const ref = useRef();
-  const { sizes, ready } = useSizes();
-
-  if (!ready) return null;
+  const { sizes } = useSizes();
   const sizeNI = sizes[ref.current?.src];
-  console.log(sizes);
 
   const getCopyright = () => {
     if (copyright) {
@@ -40,13 +38,11 @@ export default function ClientImages({
             {getCopyright()}
           </div>
           <div className={styles.textWrapper}>
-            {imgproxySize && (
-              <ClientSizeSection
-                oSize={originalSize}
-                iSize={imgproxySize}
-                nSize={sizeNI}
-              />
-            )}
+            <ClientSizeSection
+              oSize={originalSize}
+              iSize={imgproxySize}
+              nSize={sizeNI}
+            />
             <p>
               Imgproxy offers a wide range of advanced image manipulation
               features, making it a versatile tool for developers. It supports
@@ -55,7 +51,7 @@ export default function ClientImages({
               flexibility to dynamically modify images based on specific
               requirements, without the need for manual image editing.{' '}
             </p>
-            <Options options={options} />
+            <Options options={options} preset={preset} />
           </div>
         </div>
       ) : null}
@@ -72,13 +68,11 @@ export default function ClientImages({
             {getCopyright()}
           </div>
           <div className={styles.textWrapper}>
-            {sizeNI && (
-              <ClientSizeSection
-                oSize={originalSize}
-                iSize={imgproxySize}
-                nSize={sizeNI}
-              />
-            )}
+            <ClientSizeSection
+              oSize={originalSize}
+              iSize={imgproxySize}
+              nSize={sizeNI}
+            />
             <p>Next image has only a few parameters for image processing:</p>
             <p>
               <span className={styles.code}>width</span>,{' '}

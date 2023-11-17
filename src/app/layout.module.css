@@ -1,0 +1,15 @@
+.main {
+  display: flex;
+  justify-content: center;
+  max-width: 1440px;
+  width: 100%;
+  margin: 55px 20px 20px;
+
+  @media (max-width: 768px) {
+    margin: 25px 20px 20px;
+  }
+}
+
+.title {
+  margin-bottom: 12px;
+}

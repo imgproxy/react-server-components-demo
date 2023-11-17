@@ -9,16 +9,23 @@ const getImgUrl = (date) =>
 const IMGPROXY_OPTIONS = {
   format_webp: { width: 500, format: 'webp' },
   format_avif: { width: 500, format: 'avif' },
-  blur: { width: 500, format: 'webp', blur: 100 },
-  watermark: {
+  blur: { width: 500, format: 'webp', blur: 4 },
+  watermark_pro: {
     width: 500,
     format: 'avif',
-    watermark: { opacity: 0.6, position: 'soea' },
+    watermark: {
+      opacity: 0.6,
+      position: 'soea',
+      x_offset: 10,
+      y_offset: 10,
+      scale: 0.5,
+    },
+    watermark_text: btoa('<span foreground="white">imgproxy</span>'),
   },
   crop: {
     width: 500,
     format: 'webp',
-    crop: { width: 400, gravity: 'sm' },
+    crop: { width: 400, height: 250, gravity: { type: 'sm' } },
   },
   sharpen: {
     width: 500,
@@ -30,14 +37,18 @@ const IMGPROXY_OPTIONS = {
     format: 'webp',
     dpr: 2,
   },
-  background: {
+  gradient_pro: {
     width: 500,
     format: 'webp',
-    background: '1f306e',
+    gradient: {
+      opacity: 0.6,
+      direction: 'right',
+      color: 'dcd0ff',
+    },
   },
 };
 
-export default async function Day({ value }) {
+export default async function Day({ value, preset }) {
   const res = await fetch(getImgUrl(value));
   const data = await res.json();
 
@@ -51,7 +62,7 @@ export default async function Day({ value }) {
 
   const imgproxyData = await getImgproxyData(
     data?.hdurl,
-    IMGPROXY_OPTIONS.format_webp
+    IMGPROXY_OPTIONS[preset]
   );
 
   const resUrl = await fetch(data?.hdurl, { method: 'head' });
@@ -65,6 +76,7 @@ export default async function Day({ value }) {
         options={IMGPROXY_OPTIONS}
         imgproxySize={imgproxyData.size}
         originalSize={bytes}
+        preset={preset}
       >
         <img src={imgproxyData.url} />
       </ClientImages>

@@ -28,6 +28,7 @@
 
 .imageWrapper img {
   position: relative !important;
+  width: 100%;
 
   @media (max-width: 768px) {
     width: inherit;

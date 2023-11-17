@@ -1,35 +1,24 @@
 'use client';
 import { useState, useCallback } from 'react';
+import Link from 'next/link';
 import styles from './options.module.css';
 
-export default function Options({ options }) {
-  const [active, setActive] = useState('format_webp');
+export default function Options({ options, preset }) {
   const optionNames = Object.keys(options);
-
-  const useChange = useCallback(
-    (e) => {
-      setActive(e.target.value);
-    },
-    [setActive]
-  );
 
   return (
     <>
       <ul className={styles.list}>
         {optionNames.map((name, i) => (
           <li className={styles.item} key={name}>
-            <input
-              className={styles.input}
-              type="radio"
-              name="options"
-              id={name}
-              value={name}
-              onChange={useChange}
-              checked={active === name}
-            />
-            <label className={styles.label} htmlFor={name}>
+            <Link
+              className={`${styles.label} ${
+                preset === name ? styles.active : ''
+              }`}
+              href={`?preset=${name}`}
+            >
               {name.replace('_', ' ')}
-            </label>
+            </Link>
           </li>
         ))}
       </ul>
@@ -44,7 +33,7 @@ export default function Options({ options }) {
           <p>{`    value: src,`}</p>
           <p>{`    displayAs: 'base64',`}</p>
           <p>{`  },`}</p>
-          <p>{`  options: ${JSON.stringify(options[active])},`}</p>
+          <p>{`  options: ${JSON.stringify(options[preset])},`}</p>
           <p>{`  salt: SIGN_SALT,`}</p>
           <p>{`  key: SIGN_KEY,`}</p>
           <p>{`});`}</p>

@@ -10,25 +10,9 @@
   color: #1f306e;
 }
 
-.input {
-  position: absolute;
-  overflow: hidden;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  border: 0;
-  white-space: nowrap;
-  clip: rect(0 0 0 0);
-}
-
-.input:checked + .label {
-  background-color: #c7417b;
-  opacity: 1;
-}
-
 .label {
   padding: 5px 10px;
+  text-decoration: none;
   color: #ffffff;
   background-color: #1f306e;
   border-radius: 5px;
@@ -40,6 +24,11 @@
 
 .label:hover {
   opacity: 0.9;
+}
+
+.active {
+  background-color: #c7417b;
+  opacity: 1;
 }
 
 .summary {
