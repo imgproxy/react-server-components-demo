@@ -14,6 +14,8 @@
 
 imgproxy can be used to provide a fast and secure way to _get rid of all the image resizing code_ in your web application (like calling ImageMagick or GraphicsMagick, or using libraries), while also being able to resize everything on the fly on a separate server that only you control. imgproxy is fast, easy to use, and requires zero processing power or storage from the main application. imgproxy is indispensable when handling image resizing of epic proportions, especially when original images are coming from a remote source.
 
+---
+
 This is a demo demonstrating the use of imgproxy through rect server components.
 
 You can view the demo by clicking here https://react-server-components-demo.vercel.app/
