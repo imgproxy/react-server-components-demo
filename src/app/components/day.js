@@ -1,58 +1,22 @@
-import getImgproxyData from '../getImgproxyData';
+import Link from 'next/link';
+import { getImgproxyData, getImgproxyUrl } from '../imgproxyMeta';
 import styles from './day.module.css';
 import ClientImages from './clientImages';
+import { IMGPROXY_OPTIONS, getDays } from './dayUtils';
 
 const { NASA_API_KEY } = process.env;
-const getImgUrl = (date) =>
-  `https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}&date=${date}`;
 
-const IMGPROXY_OPTIONS = {
-  format_webp: { width: 500, format: 'webp' },
-  format_avif: { width: 500, format: 'avif' },
-  blur: { width: 500, format: 'webp', blur: 4 },
-  watermark_pro: {
-    width: 500,
-    format: 'avif',
-    watermark: {
-      opacity: 0.6,
-      position: 'soea',
-      x_offset: 10,
-      y_offset: 10,
-      scale: 0.5,
-    },
-    watermark_text: btoa('<span foreground="white">imgproxy</span>'),
-  },
-  crop: {
-    width: 500,
-    format: 'webp',
-    crop: { width: 400, height: 250, gravity: { type: 'sm' } },
-  },
-  sharpen: {
-    width: 500,
-    format: 'webp',
-    sharpen: 2,
-  },
-  dpr: {
-    width: 500,
-    format: 'webp',
-    dpr: 2,
-  },
-  gradient_pro: {
-    width: 500,
-    format: 'webp',
-    gradient: {
-      opacity: 0.6,
-      direction: 'right',
-      color: 'dcd0ff',
-    },
-  },
-};
+const getImgData = (startDate, endDate) =>
+  `https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}&start_date=${startDate}&end_date=${endDate}`;
 
 export default async function Day({ value, preset }) {
-  const res = await fetch(getImgUrl(value));
-  const data = await res.json();
+  const dayLinks = [];
+  const days = getDays();
+  const resDaysImg = await fetch(getImgData(days[days.length - 1], days[0]));
+  const dataDaysImg = await resDaysImg.json();
+  const checkedPreset = preset ? preset : 'format_webp';
 
-  if (data?.error)
+  if (dataDaysImg?.error)
     return (
       <section>
         <p>NASA has been banned us :(</p>
@@ -60,25 +24,58 @@ export default async function Day({ value, preset }) {
       </section>
     );
 
+  const cutData = dataDaysImg
+    .map((item) => {
+      return {
+        date: item.date,
+        url: item.hdurl,
+        title: item.title,
+        copyright: item.copyright,
+      };
+    })
+    .reverse();
+
+  const currentDayUrl = cutData.find((item) => item.date === value);
+
   const imgproxyData = await getImgproxyData(
-    data?.hdurl,
-    IMGPROXY_OPTIONS[preset]
+    currentDayUrl.url,
+    IMGPROXY_OPTIONS[checkedPreset]
   );
 
-  const resUrl = await fetch(data?.hdurl, { method: 'head' });
+  for (let i = 0; i < cutData.length; i++) {
+    const imgproxyUrl = getImgproxyUrl(cutData[i].url, {
+      resize: { resizing_type: 'fill', width: 35, height: 35, enlarge: 1 },
+    });
+
+    dayLinks.push(
+      <li key={cutData[i].date}>
+        <Link
+          className={`${styles.link} ${
+            cutData[i].date === value ? styles.linkActive : ''
+          }`}
+          href={`/day/${cutData[i].date}?preset=format_webp`}
+        >
+          <img src={imgproxyUrl} alt={cutData[i].title} />
+        </Link>
+      </li>
+    );
+  }
+
+  const resUrl = await fetch(currentDayUrl.url, { method: 'head' });
   const bytes = resUrl.headers.get('content-length');
 
   return (
     <section className={styles.imgSection}>
       <ClientImages
-        link={data?.hdurl}
-        copyright={data?.copyright}
+        link={currentDayUrl.url}
+        copyright={currentDayUrl.copyright}
         options={IMGPROXY_OPTIONS}
         imgproxySize={imgproxyData.size}
         originalSize={bytes}
-        preset={preset}
+        preset={checkedPreset}
+        links={dayLinks}
       >
-        <img src={imgproxyData.url} />
+        <img src={imgproxyData.url} alt={currentDayUrl.title} />
       </ClientImages>
     </section>
   );

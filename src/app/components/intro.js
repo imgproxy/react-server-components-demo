@@ -1,55 +1,42 @@
 import styles from './intro.module.css';
-import Link from 'next/link';
 
-const getDays = () => {
-  const dates = [];
-  for (let i = 0; i < 5; i++) {
-    const newDate = new Date();
-    newDate.setDate(newDate.getDate() - i);
-    dates.push(newDate.toISOString().split('T')[0]);
-  }
-  return dates;
-};
-
-export default function Intro({ activeDay }) {
-  const dayLinks = [];
-  const days = getDays();
-
-  for (let i = 0; i < days.length; i++) {
-    dayLinks.push(
-      <li key={days[i]}>
-        <Link
-          className={`${styles.link} ${
-            days[i] === activeDay ? styles.linkActive : ''
-          }`}
-          href={`/day/${days[i]}?preset=format_webp`}
-        >
-          {days[i]}
-        </Link>
-      </li>
-    );
-  }
-
+export default async function Intro({ activeDay }) {
   return (
     <div className={styles.wrapper}>
-      <aside className={styles.menu}>
-        <h2>Pick a date</h2>
-        <ul className={styles.list}>{dayLinks}</ul>
-      </aside>
       <div className={styles.textWrapper}>
+        <h2 className={styles.title}>What is imgproxy?</h2>
         <p className={styles.intro}>
-          Image processing is an essential part of web development, especially
-          when it comes to optimizing images for better performance and user
-          experience.
+          Image processing plays a crucial role in web development, particularly
+          in optimizing images for improved performance and user experience.{' '}
+          <strong>
+            imgproxy is a standalone server that is fast and secure, designed
+            specifically for resizing and converting remote images
+          </strong>
+          . The core principles of imgproxy are simplicity, speed, and security.
+        </p>
+        <h2 className={styles.title}>What the demo?</h2>
+        <p className={styles.intro}>
+          <strong>The demo demonstrates</strong> how both React Server
+          Components and imgproxy can collaborate to{' '}
+          <strong>process images on the fly</strong>, such as generating
+          thumbnails and applying watermarks. The demo showcases a selection of
+          images that undergo processing using both next/image and imgproxy.{' '}
+          <strong>The image dimensions remain the same</strong> for both image
+          optimization tools, imgproxy uses the default options identical to
+          next/image.
         </p>
         <p className={styles.intro}>
-          Imgproxy is a fast and secure standalone server for resizing and
-          converting remote images. The main principles of imgproxy are
-          simplicity, speed, and security.
-        </p>
-        <p className={styles.intro}>
-          This example shows how to use imgproxy with RSC (React Server
-          Component) and Next Image component.
+          In the demo, the imgproxy section only highlights a small fraction of
+          the available options with imgproxy. With imgproxy pro you can also
+          keep original image URLs secret by encoding it. You can see all
+          options in the{' '}
+          <a
+            className={styles.link}
+            href="https://docs.imgproxy.net/usage/processing"
+          >
+            imgproxy docs
+          </a>
+          . We welcome any feedback and suggestions you may have.
         </p>
       </div>
     </div>

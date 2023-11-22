@@ -4,7 +4,19 @@ import Link from 'next/link';
 import styles from './options.module.css';
 
 export default function Options({ options, preset }) {
+  const [open, setOpen] = useState(false);
   const optionNames = Object.keys(options);
+
+  const toggle = useCallback(() => {
+    setOpen((prev) => !prev);
+  }, []);
+
+  const splittedOptions = JSON.stringify(options[preset], null, 2)
+    .split('\n')
+    .slice(1, -1);
+  const textOptions = splittedOptions.map((item) => {
+    return <p className={styles.option} key={item}>{`  ${item}`}</p>;
+  });
 
   return (
     <>
@@ -16,24 +28,27 @@ export default function Options({ options, preset }) {
                 preset === name ? styles.active : ''
               }`}
               href={`?preset=${name}`}
+              scroll={false}
             >
               {name.replace('_', ' ')}
             </Link>
           </li>
         ))}
       </ul>
-      <details>
+      <details open={open} onToggle={toggle}>
         <summary className={styles.summary}>Show code</summary>
         <pre className={styles.code}>
-          <p>{`import { generateImageUrl } from '@imgproxy/imgproxy-node';`}</p>
+          <p>{`import { generateImageUrl } from "@imgproxy/imgproxy-node";`}</p>
           <p>{`const { SIGN_KEY, SIGN_SALT, ENDPOINT } = process.env;`}</p>
           <p>{`const imgproxySrc = generateImageUrl({`}</p>
           <p>{`  endpoint: ENDPOINT,`}</p>
           <p>{`  url: {`}</p>
           <p>{`    value: src,`}</p>
-          <p>{`    displayAs: 'base64',`}</p>
+          <p>{`    displayAs: "base64",`}</p>
           <p>{`  },`}</p>
-          <p>{`  options: ${JSON.stringify(options[preset])},`}</p>
+          <p className={styles.option}>{`  options: {`}</p>
+          {textOptions}
+          <p className={styles.option}>{`  },`}</p>
           <p>{`  salt: SIGN_SALT,`}</p>
           <p>{`  key: SIGN_KEY,`}</p>
           <p>{`});`}</p>

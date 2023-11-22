@@ -1,9 +1,17 @@
 .wrapper {
+  width: fit-content;
   margin-bottom: 15px;
-  padding-right: 5px;
-  padding-left: 5px;
+  padding: 6px 20px 6px 6px;
   font-family: monospace;
   font-size: 16px;
   background-color: #ebf1f4;
   border-radius: 2px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.wrapper .text {
+  margin-top: 0;
 }

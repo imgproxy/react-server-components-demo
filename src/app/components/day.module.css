@@ -4,32 +4,17 @@
   max-width: 90vw;
 }
 
-.copyrigth,
-.wrapper p {
-  font-size: 12px;
+.link {
+  opacity: 0.6;
+  transition-duration: 0.3s;
+  transition-property: opacity;
+  cursor: pointer;
 }
 
-.copyrigth {
-  align-self: flex-start;
+.linkActive {
+  opacity: 1;
 }
 
-.wrapper {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin-top: 40px;
-}
-
-.wrapper p {
-  margin-top: 5px;
-}
-
-.next,
-.imgproxy {
-  max-width: 47%;
-  padding-bottom: 35px;
-}
-
-.next img {
-  position: relative !important;
+.link:hover {
+  opacity: 1;
 }

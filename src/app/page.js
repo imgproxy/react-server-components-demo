@@ -1,13 +1,7 @@
-import Intro from '@/app/components/intro';
-import styles from './page.module.css';
+import { redirect } from 'next/navigation';
+import { formatDay } from '@/app/components/dayUtils';
 
 export default async function Page() {
-  return (
-    <>
-      <Intro />
-      <p className={styles.noDay}>
-        To see the content you need to select a date
-      </p>
-    </>
-  );
+  const today = formatDay(new Date());
+  redirect(`/day/${today}?preset=format_webp`);
 }

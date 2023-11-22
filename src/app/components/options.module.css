@@ -34,14 +34,21 @@
 .summary {
   margin-top: 10px;
   font-size: 12px;
+  color: #1f306e;
   cursor: pointer;
 }
 
 .code {
   padding: 10px 20px;
   white-space: pre-wrap;
+  overflow-x: scroll;
 }
 
 .code p {
   font-size: 14px;
+}
+
+.option {
+  max-width: calc(100vw - 40px - 40px);
+  font-weight: 600;
 }

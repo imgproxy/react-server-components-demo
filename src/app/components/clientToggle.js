@@ -12,7 +12,7 @@ export default function ClientToggle({ active, onChange }) {
 
   return (
     <ul className={styles.toggle}>
-      <li key="on">
+      <li className={styles.item} key="on">
         <input
           className={styles.input}
           type="radio"
@@ -23,10 +23,10 @@ export default function ClientToggle({ active, onChange }) {
           checked={active === 'imgproxy'}
         />
         <label className={styles.label} htmlFor="toggle-on">
-          Imgproxy
+          imgproxy
         </label>
       </li>
-      <li key="off">
+      <li className={styles.item} key="off">
         <input
           className={styles.input}
           type="radio"

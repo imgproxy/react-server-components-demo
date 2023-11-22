@@ -5,8 +5,8 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'Imgproxy on RSC + Next Image',
-  description: 'Demo of Imgproxy on RSC + Next Image',
+  title: 'React Server Components imgproxy demo',
+  description: 'React Server Components imgproxy demo',
 };
 
 export default function RootLayout({ children }) {
@@ -15,7 +15,19 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <main className={styles.main}>
           <section>
-            <h1 className={styles.title}>Next.js + Imgproxy</h1>
+            <div className={styles.wrapper}>
+              <h1 className={styles.title}>
+                React Server Components imgproxy demo
+              </h1>
+              <a
+                className={styles.link}
+                href="https://github.com/imgproxy/react-server-components-demo"
+                rel="noreferrer noopener"
+                target="_blank"
+              >
+                view source on github
+              </a>
+            </div>
             {children}
           </section>
         </main>
