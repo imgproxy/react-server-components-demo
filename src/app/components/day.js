@@ -1,30 +1,35 @@
-import Link from 'next/link';
-import { getImgproxyData, getImgproxyUrl } from '../imgproxyMeta';
-import styles from './day.module.css';
+import { getImgproxyUrl } from '../imgproxyMeta';
 import ClientMainContent from './clientMainContent';
-import { IMGPROXY_OPTIONS, getDays } from './dayUtils';
+import SizeMeta from './sizeMeta';
+import { IMGPROXY_OPTIONS, getDays } from '../util/day';
 
 const { NASA_API_KEY } = process.env;
 
-const getImgData = (startDate, endDate) =>
+const THUMBNAIL_PRESET = {
+  resize: { resizing_type: 'fill', width: 35, height: 35, enlarge: 1 },
+};
+
+const getImgUrls = (startDate, endDate) =>
   `https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}&start_date=${startDate}&end_date=${endDate}`;
 
-export default async function Day({ value, preset }) {
-  const dayLinks = [];
+async function fetchUrls() {
   const days = getDays();
-  const resDaysImg = await fetch(getImgData(days[days.length - 1], days[0]));
-  const dataDaysImg = await resDaysImg.json();
-  const checkedPreset = preset ? preset : 'format_webp';
+  const res = await fetch(getImgUrls(days[days.length - 1], days[0]));
+  return res.json();
+}
 
-  if (dataDaysImg?.error)
+export default async function Day({ value, preset: maybePreset }) {
+  const res = await fetchUrls();
+
+  if (res?.error)
     return (
       <section>
         <p>NASA has been banned us :(</p>
-        <p>{data.error?.message}</p>
+        <p>{res.error?.message}</p>
       </section>
     );
 
-  const cutData = dataDaysImg
+  const cutData = res
     .map((item) => {
       return {
         date: item.date,
@@ -36,48 +41,28 @@ export default async function Day({ value, preset }) {
     .reverse();
 
   const currentDayUrl = cutData.find((item) => item.date === value);
-
-  const imgproxyData = await getImgproxyData(
+  const preset = maybePreset ? maybePreset : 'format_webp';
+  const imgproxyUrl = getImgproxyUrl(
     currentDayUrl.url,
-    IMGPROXY_OPTIONS[checkedPreset]
+    IMGPROXY_OPTIONS[preset]
   );
-
-  for (let i = 0; i < cutData.length; i++) {
-    const imgproxyUrl = getImgproxyUrl(cutData[i].url, {
-      resize: { resizing_type: 'fill', width: 35, height: 35, enlarge: 1 },
-    });
-
-    dayLinks.push(
-      <li key={cutData[i].date}>
-        <Link
-          className={`${styles.link} ${
-            cutData[i].date === value ? styles.linkActive : ''
-          }`}
-          href={`/day/${cutData[i].date}?preset=format_webp`}
-        >
-          <img src={imgproxyUrl} alt={cutData[i].title} />
-        </Link>
-      </li>
-    );
-  }
-
-  const resUrl = await fetch(currentDayUrl.url, { method: 'head' });
-  const bytes = resUrl.headers.get('content-length');
-  const imgSizes = {
-    original: bytes,
-    imgproxy: imgproxyData.size,
-  };
+  const thumbnails = cutData.map((t) => ({
+    url: getImgproxyUrl(t.url, THUMBNAIL_PRESET),
+    date: t.date,
+    title: t.title,
+  }));
 
   return (
     <ClientMainContent
+      activeDay={value}
       link={currentDayUrl.url}
+      imgproxyLink={imgproxyUrl}
+      title={currentDayUrl.title}
       copyright={currentDayUrl.copyright}
       options={IMGPROXY_OPTIONS}
-      imgSizes={imgSizes}
-      preset={checkedPreset}
-      thumbnails={dayLinks}
-    >
-      <img src={imgproxyData.url} alt={currentDayUrl.title} />
-    </ClientMainContent>
+      preset={preset}
+      thumbnails={thumbnails}
+      sizeMeta={<SizeMeta url={currentDayUrl.url} imgproxyUrl={imgproxyUrl} />}
+    />
   );
 }

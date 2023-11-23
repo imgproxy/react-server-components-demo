@@ -10,9 +10,19 @@
     rgb(242, 241, 245) 0 70%,
     rgb(255, 255, 255) 70% 100%
   );
+
+  @media (max-width: 768px) {
+    padding-bottom: 30vh;
+    background: none;
+    background-color: #f2f1f5;
+  }
 }
 
 .content {
   display: flex;
   max-width: 1440px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 }

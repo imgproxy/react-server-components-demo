@@ -1,44 +1,42 @@
 'use client';
 import { useState, useRef } from 'react';
-import { useSizes } from './clientUtils';
 import ClientToolsPanel from './clientToolsPanel';
 import ClientImageSection from './clientImageSection';
 import styles from './clientMainContent.module.css';
 
 export default function MainContent({
   link,
+  imgproxyLink,
+  title,
   copyright,
   options,
-  imgSizes,
+  activeDay,
+  sizeMeta,
   preset,
   thumbnails,
-  children,
 }) {
   const [active, setActive] = useState('imgproxy');
   const ref = useRef();
-  const { sizes } = useSizes();
-  const sizeNI = sizes[ref.current?.src];
-  const size = {
-    ...imgSizes,
-    ni: sizeNI,
-  };
 
   return (
     <section className={styles.wrapper}>
       <ClientToolsPanel
         state={active}
         onChange={setActive}
-        size={size}
+        sizeMeta={sizeMeta}
         options={options}
         preset={preset}
       />
       <ClientImageSection
+        activeDay={activeDay}
         state={active}
         thumbnails={thumbnails}
-        urlNi={link}
         refNi={ref}
-        imgproxy={children}
+        urlNi={link}
+        urlImgproxy={imgproxyLink}
+        title={title}
         copyright={copyright}
+        preset={preset}
       />
     </section>
   );

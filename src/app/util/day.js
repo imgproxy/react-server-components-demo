@@ -1,5 +1,5 @@
 export const IMGPROXY_OPTIONS = {
-  format_webp: { width: 500, format: 'webp' },
+  format_webp: { width: 500, format: 'webp', quality: 75 },
   format_avif: { width: 500, format: 'avif' },
   blur: { width: 500, format: 'webp', blur: 4 },
   watermark_pro: {

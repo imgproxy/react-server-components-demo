@@ -5,8 +5,10 @@
   padding: 45px 35px 20px;
   background-color: #ffffff;
 
-  @media (max-width: 650px) {
-    flex-direction: column;
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 20px 0;
+    background-color: #f2f1f5;
   }
 }
 
@@ -14,7 +16,7 @@
   display: flex;
   justify-content: space-between;
 
-  @media (max-width: 768px) {
+  @media (max-width: 650px) {
     flex-direction: column;
   }
 }
@@ -49,12 +51,6 @@
 
 .title + p {
   margin-top: 6px;
-}
-
-.textWrapper {
-  @media (max-width: 650px) {
-    margin-top: 20px;
-  }
 }
 
 .intro + .intro {

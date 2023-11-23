@@ -1,5 +1,8 @@
 'use client';
+
 import { useEffect, useState } from 'react';
+
+const saved = {};
 
 const reloadIfFirstTimeHere = () => {
   if (!localStorage.getItem('visited')) {
@@ -10,7 +13,7 @@ const reloadIfFirstTimeHere = () => {
 
 export function useSizes() {
   const [sw_active, set_swa] = useState(false);
-  const [sizes, set_sizes] = useState({});
+  const [sizes, set_sizes] = useState(saved);
   useEffect(() => {
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/sw.js').then(() => {
@@ -18,10 +21,14 @@ export function useSizes() {
         set_swa(true);
       });
       navigator.serviceWorker.addEventListener('message', (event) => {
-        set_sizes((v) => ({
-          ...v,
-          [event.data.url]: event.data.bytes,
-        }));
+        set_sizes((v) => {
+          const new_sizes = {
+            ...v,
+            [event.data.url]: event.data.bytes,
+          };
+          Object.assign(saved, new_sizes);
+          return new_sizes;
+        });
       });
     }
   }, []);

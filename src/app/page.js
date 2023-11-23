@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation';
-import { formatDay } from '@/app/components/dayUtils';
+import { formatDay } from '@/app/util/day';
 
 export default async function Page() {
   const today = formatDay(new Date());
