@@ -3,7 +3,7 @@ import { useCallback } from 'react';
 import styles from './clientToggle.module.css';
 
 export default function ClientToggle({ active, onChange }) {
-  const useChange = useCallback(
+  const handleChange = useCallback(
     (e) => {
       onChange(e.target.value);
     },
@@ -19,7 +19,7 @@ export default function ClientToggle({ active, onChange }) {
           name="toggle"
           id="toggle-on"
           value="imgproxy"
-          onChange={useChange}
+          onChange={handleChange}
           checked={active === 'imgproxy'}
         />
         <label className={styles.label} htmlFor="toggle-on">
@@ -33,11 +33,11 @@ export default function ClientToggle({ active, onChange }) {
           name="toggle"
           id="toggle-off"
           value="nextimage"
-          onChange={useChange}
+          onChange={handleChange}
           checked={active === 'nextimage'}
         />
         <label className={styles.label} htmlFor="toggle-off">
-          NextImage
+          next/image
         </label>
       </li>
     </ul>

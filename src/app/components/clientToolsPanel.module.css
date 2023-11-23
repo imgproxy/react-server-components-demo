@@ -1,0 +1,22 @@
+.textWrapper {
+  width: 35%;
+
+  @media (max-width: 768px) {
+    order: 1;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+}
+
+.code {
+  padding-right: 5px;
+  padding-left: 5px;
+  font-family: monospace;
+  font-size: 16px;
+  background-color: #dfe4eb;
+  border-radius: 2px;
+}
+
+.textWrapper p {
+  margin-top: 10px;
+}

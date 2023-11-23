@@ -1,8 +1,21 @@
 import styles from './intro.module.css';
 
-export default async function Intro({ activeDay }) {
+export default async function Intro() {
   return (
-    <div className={styles.wrapper}>
+    <section className={styles.wrapper}>
+      <div className={styles.wrapperTitle}>
+        <h1 className={styles.mainTitle}>
+          React Server Components imgproxy demo
+        </h1>
+        <a
+          className={styles.source}
+          href="https://github.com/imgproxy/react-server-components-demo"
+          rel="noreferrer noopener"
+          target="_blank"
+        >
+          view source on github
+        </a>
+      </div>
       <div className={styles.textWrapper}>
         <h2 className={styles.title}>What is imgproxy?</h2>
         <p className={styles.intro}>
@@ -33,12 +46,14 @@ export default async function Intro({ activeDay }) {
           <a
             className={styles.link}
             href="https://docs.imgproxy.net/usage/processing"
+            rel="noreferrer noopener"
+            target="_blank"
           >
             imgproxy docs
           </a>
           . We welcome any feedback and suggestions you may have.
         </p>
       </div>
-    </div>
+    </section>
   );
 }

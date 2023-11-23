@@ -7,8 +7,8 @@ export default async function Page({ params, searchParams }) {
 
   return (
     <>
-      <Intro activeDay={activeDay} />
       <Day value={activeDay} preset={preset} />
+      <Intro activeDay={activeDay} />
     </>
   );
 }

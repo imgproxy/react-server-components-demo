@@ -1,7 +1,10 @@
 .toggle {
   display: flex;
-  align-self: center;
-  margin-top: 30px;
+  justify-content: center;
+}
+
+.item {
+  display: flex;
 }
 
 .input {

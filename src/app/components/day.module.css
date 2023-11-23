@@ -1,9 +1,3 @@
-.imgSection {
-  display: flex;
-  flex-direction: column;
-  max-width: 90vw;
-}
-
 .link {
   opacity: 0.6;
   transition-duration: 0.3s;

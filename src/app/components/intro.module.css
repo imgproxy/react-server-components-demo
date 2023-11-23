@@ -1,10 +1,44 @@
 .wrapper {
   display: flex;
-  margin-top: 20px;
+  flex-direction: column;
+  width: 30%;
+  padding: 45px 35px 20px;
+  background-color: #ffffff;
 
   @media (max-width: 650px) {
     flex-direction: column;
-    margin-top: 0;
+  }
+}
+
+.wrapperTitle {
+  display: flex;
+  justify-content: space-between;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.mainTitle {
+  margin-bottom: 12px;
+  color: #f5487f;
+}
+
+.source {
+  height: fit-content;
+  font-size: 12px;
+  text-decoration: none;
+  color: #1f306e;
+  opacity: 0.6;
+  transition-duration: 0.3s;
+  transition-property: opacity;
+}
+
+.source:hover {
+  opacity: 1;
+
+  @media (max-width: 768px) {
+    opacity: 0.6;
   }
 }
 

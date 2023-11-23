@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { getImgproxyData, getImgproxyUrl } from '../imgproxyMeta';
 import styles from './day.module.css';
-import ClientImages from './clientImages';
+import ClientMainContent from './clientMainContent';
 import { IMGPROXY_OPTIONS, getDays } from './dayUtils';
 
 const { NASA_API_KEY } = process.env;
@@ -63,20 +63,21 @@ export default async function Day({ value, preset }) {
 
   const resUrl = await fetch(currentDayUrl.url, { method: 'head' });
   const bytes = resUrl.headers.get('content-length');
+  const imgSizes = {
+    original: bytes,
+    imgproxy: imgproxyData.size,
+  };
 
   return (
-    <section className={styles.imgSection}>
-      <ClientImages
-        link={currentDayUrl.url}
-        copyright={currentDayUrl.copyright}
-        options={IMGPROXY_OPTIONS}
-        imgproxySize={imgproxyData.size}
-        originalSize={bytes}
-        preset={checkedPreset}
-        links={dayLinks}
-      >
-        <img src={imgproxyData.url} alt={currentDayUrl.title} />
-      </ClientImages>
-    </section>
+    <ClientMainContent
+      link={currentDayUrl.url}
+      copyright={currentDayUrl.copyright}
+      options={IMGPROXY_OPTIONS}
+      imgSizes={imgSizes}
+      preset={checkedPreset}
+      thumbnails={dayLinks}
+    >
+      <img src={imgproxyData.url} alt={currentDayUrl.title} />
+    </ClientMainContent>
   );
 }
