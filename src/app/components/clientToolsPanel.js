@@ -1,4 +1,6 @@
 'use client';
+import { useCallback, useState } from 'react';
+import { useSwipeable } from 'react-swipeable';
 import ClientToggle from './clientToggle';
 import Options from './options';
 import styles from './clientToolsPanel.module.css';
@@ -10,8 +12,27 @@ export default function ClientToolsPanel({
   preset,
   sizeMeta,
 }) {
+  const [opened, setOpened] = useState(false);
+
+  const handlers = useSwipeable({
+    onSwipedUp: () => setOpened(true),
+    onSwipedDown: () => setOpened(false),
+    delta: 5,
+    preventScrollOnSwipe: true,
+  });
+
+  const handleClick = useCallback(() => {
+    setOpened((v) => !v);
+  }, []);
+
   return (
-    <section className={styles.textWrapper}>
+    <section
+      className={`${styles.textWrapper} ${
+        opened ? styles.textWrapperOpened : ''
+      }`}
+    >
+      <span {...handlers} className={styles.swipe} />
+      <button className={styles.button} onClick={handleClick} />
       <ClientToggle active={state} onChange={onChange} />
       {sizeMeta}
       {state === 'imgproxy' && (

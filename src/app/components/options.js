@@ -4,12 +4,7 @@ import Link from 'next/link';
 import styles from './options.module.css';
 
 export default function Options({ options, preset }) {
-  const [open, setOpen] = useState(false);
   const optionNames = Object.keys(options);
-
-  const toggle = useCallback(() => {
-    setOpen((prev) => !prev);
-  }, []);
 
   const splittedOptions = JSON.stringify(options[preset], null, 2)
     .split('\n')
@@ -21,7 +16,7 @@ export default function Options({ options, preset }) {
   return (
     <>
       <ul className={styles.list}>
-        {optionNames.map((name, i) => (
+        {optionNames.map((name) => (
           <li className={styles.item} key={name}>
             <Link
               className={`${styles.label} ${
@@ -35,8 +30,8 @@ export default function Options({ options, preset }) {
           </li>
         ))}
       </ul>
-      <details open={open} onToggle={toggle}>
-        <summary className={styles.summary}>Show code</summary>
+      <div className={styles.codeWrapper}>
+        <p>Code</p>
         <pre className={styles.code}>
           <p>{`import { generateImageUrl } from "@imgproxy/imgproxy-node";`}</p>
           <p>{`const { SIGN_KEY, SIGN_SALT, ENDPOINT } = process.env;`}</p>
@@ -53,7 +48,24 @@ export default function Options({ options, preset }) {
           <p>{`  key: SIGN_KEY,`}</p>
           <p>{`});`}</p>
         </pre>
-      </details>
+      </div>
+      {/* <summary className={styles.summary}>Show code</summary>
+        <pre className={styles.code}>
+          <p>{`import { generateImageUrl } from "@imgproxy/imgproxy-node";`}</p>
+          <p>{`const { SIGN_KEY, SIGN_SALT, ENDPOINT } = process.env;`}</p>
+          <p>{`const imgproxySrc = generateImageUrl({`}</p>
+          <p>{`  endpoint: ENDPOINT,`}</p>
+          <p>{`  url: {`}</p>
+          <p>{`    value: src,`}</p>
+          <p>{`    displayAs: "base64",`}</p>
+          <p>{`  },`}</p>
+          <p className={styles.option}>{`  options: {`}</p>
+          {textOptions}
+          <p className={styles.option}>{`  },`}</p>
+          <p>{`  salt: SIGN_SALT,`}</p>
+          <p>{`  key: SIGN_KEY,`}</p>
+          <p>{`});`}</p>
+        </pre> */}
     </>
   );
 }
