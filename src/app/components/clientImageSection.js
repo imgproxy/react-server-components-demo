@@ -25,8 +25,9 @@ export default function ClientImageSection({
 }) {
   const ref = useRef();
   const [dims, setDims] = useState(imgDimensions);
+  const [loading, setLoading] = useState(true);
 
-  const updateDims = useCallback(
+  const onImageReady = useCallback(
     (imgElem) => {
       const { clientWidth, clientHeight } = imgElem;
 
@@ -35,25 +36,29 @@ export default function ClientImageSection({
         height: clientHeight,
       };
       setDims({ ...imgDimensions });
+      setLoading(false);
     },
     [urlNi]
   );
 
   useEffect(() => {
     if (ref.current?.complete) {
-      updateDims(ref.current);
+      onImageReady(ref.current);
     }
-  }, [updateDims]);
+  }, [onImageReady]);
 
   const handleLoad = useCallback(
     (e) => {
-      updateDims(e.target);
+      onImageReady(e.target);
     },
-    [updateDims]
+    [onImageReady]
   );
 
-  const wrapperStyle = {};
+  const handleLoadNi = useCallback(() => {
+    setLoading(false);
+  }, []);
 
+  const wrapperStyle = {};
   if (dims[urlNi]) {
     wrapperStyle.minHeight = dims[urlNi].height;
   }
@@ -79,6 +84,11 @@ export default function ClientImageSection({
         ))}
       </ul>
       <div className={styles.imageWrapper} style={wrapperStyle}>
+        <div
+          className={`${styles.loader} ${!loading ? styles.loaderHidden : ''}`}
+        >
+          <p className={styles.loading}>Loading...</p>
+        </div>
         {state === 'imgproxy' && (
           <img ref={ref} src={urlImgproxy} alt={title} onLoad={handleLoad} />
         )}
@@ -89,6 +99,7 @@ export default function ClientImageSection({
             alt={title}
             layout="fill"
             objectFit="contain"
+            onLoad={handleLoadNi}
           />
         )}
         {getCopyright(copyright)}
