@@ -23,7 +23,7 @@ export default function ClientToolsPanel({
       {state === 'nextimage' && (
         <>
           <p className={styles.text}>
-            Next image has only a few parameters for image processing:
+            next/image has only a few parameters for image processing:
           </p>
           <p className={styles.text}>
             <span className={styles.code}>width</span>,{' '}

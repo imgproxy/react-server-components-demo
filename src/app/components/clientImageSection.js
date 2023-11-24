@@ -1,6 +1,9 @@
+import { useRef, useState, useCallback, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './clientImageSection.module.css';
+
+const imgDimensions = {};
 
 const getCopyright = (copyright) => {
   if (copyright) {
@@ -20,6 +23,41 @@ export default function ClientImageSection({
   activeDay,
   preset,
 }) {
+  const ref = useRef();
+  const [dims, setDims] = useState(imgDimensions);
+
+  const updateDims = useCallback(
+    (imgElem) => {
+      const { clientWidth, clientHeight } = imgElem;
+
+      imgDimensions[urlNi] = {
+        width: clientWidth,
+        height: clientHeight,
+      };
+      setDims({ ...imgDimensions });
+    },
+    [urlNi]
+  );
+
+  useEffect(() => {
+    if (ref.current?.complete) {
+      updateDims(ref.current);
+    }
+  }, [updateDims]);
+
+  const handleLoad = useCallback(
+    (e) => {
+      updateDims(e.target);
+    },
+    [updateDims]
+  );
+
+  const wrapperStyle = {};
+
+  if (dims[urlNi]) {
+    wrapperStyle.minHeight = dims[urlNi].height;
+  }
+
   return (
     <section className={styles.imgSection}>
       <p className={styles.info}>
@@ -40,8 +78,10 @@ export default function ClientImageSection({
           </li>
         ))}
       </ul>
-      <div className={styles.imageWrapper}>
-        {state === 'imgproxy' && <img src={urlImgproxy} alt={title} />}
+      <div className={styles.imageWrapper} style={wrapperStyle}>
+        {state === 'imgproxy' && (
+          <img ref={ref} src={urlImgproxy} alt={title} onLoad={handleLoad} />
+        )}
         {state === 'nextimage' && (
           <Image
             src={urlNi}

@@ -29,14 +29,13 @@ export default async function Intro() {
         </p>
         <h2 className={styles.title}>What the demo?</h2>
         <p className={styles.intro}>
-          <strong>The demo demonstrates</strong> how both React Server
-          Components and imgproxy can collaborate to{' '}
-          <strong>process images on the fly</strong>, such as generating
-          thumbnails and applying watermarks. The demo showcases a selection of
-          images that undergo processing using both next/image and imgproxy.{' '}
-          <strong>The image dimensions remain the same</strong> for both image
-          optimization tools, imgproxy uses the default options identical to
-          next/image.
+          The demo demonstrates how both React Server Components and imgproxy
+          can collaborate to <strong>process images on the fly</strong>, such as
+          generating thumbnails and applying watermarks. The demo showcases a
+          selection of images that undergo processing using both next/image and
+          imgproxy. <strong>The image dimensions remain the same</strong> for
+          both image optimization tools, imgproxy uses the default options
+          identical to next/image.
         </p>
         <p className={styles.intro}>
           In the demo, the imgproxy section only highlights a small fraction of
