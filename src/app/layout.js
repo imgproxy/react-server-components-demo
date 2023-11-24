@@ -9,6 +9,10 @@ export const metadata = {
   description: 'React Server Components imgproxy demo',
 };
 
+export const viewport = {
+  viewportFit: 'cover',
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">

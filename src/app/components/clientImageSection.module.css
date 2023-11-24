@@ -13,17 +13,6 @@
   }
 }
 
-.info {
-  font-size: 12px;
-  text-align: center;
-  color: #1f306e;
-  font-style: italic;
-
-  @media (max-width: 768px) {
-    order: 3;
-  }
-}
-
 .list {
   display: flex;
   justify-content: center;

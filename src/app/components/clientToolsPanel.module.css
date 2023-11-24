@@ -20,8 +20,8 @@
 
 .textWrapperOpened {
   @media (max-width: 768px) {
-    top: 30vh;
-    height: 70vh;
+    top: 30dvh;
+    height: 70dvh;
     overflow-y: scroll;
   }
 }
@@ -49,8 +49,16 @@
   top: 0;
   left: 0;
   z-index: 1;
+  display: none;
   width: 100vw;
   height: 40px;
+  @media (max-width: 650px) {
+    display: block;
+  }
+}
+
+.swipeClosed {
+  height: 100vh;
 }
 
 .code {

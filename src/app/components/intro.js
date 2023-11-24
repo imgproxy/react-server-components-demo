@@ -1,4 +1,7 @@
+import Image from 'next/image';
 import styles from './intro.module.css';
+
+const REPO_URL = 'https://github.com/imgproxy/react-server-components-demo';
 
 export default async function Intro() {
   return (
@@ -9,14 +12,32 @@ export default async function Intro() {
         </h1>
         <a
           className={styles.source}
-          href="https://github.com/imgproxy/react-server-components-demo"
+          href={REPO_URL}
           rel="noreferrer noopener"
           target="_blank"
         >
-          view source on github
+          <Image
+            src="/githubLogo.svg"
+            width={35}
+            height={35}
+            alt="view source on github"
+          />
         </a>
       </div>
       <div className={styles.textWrapper}>
+        <h2 className={styles.title}>TLDR;</h2>
+        <p className={styles.intro}>
+          The demo showcases how <strong>imgproxy</strong> can help to process
+          images on the fly using 60+ build in options in comparison to{' '}
+          <strong>next/image</strong>.
+        </p>
+        <p className={styles.intro}>
+          You can find{' '}
+          <a target="_blank" rel="noreferrer noopener" href={REPO_URL}>
+            the source code
+          </a>{' '}
+          on GitHub and try it on your own.
+        </p>
         <h2 className={styles.title}>What is imgproxy?</h2>
         <p className={styles.intro}>
           Image processing plays a crucial role in web development, particularly

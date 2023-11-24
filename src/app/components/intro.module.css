@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   width: 30%;
-  padding: 45px 35px 20px;
+  padding: 105px 35px 20px;
   background-color: #ffffff;
 
   @media (max-width: 768px) {
@@ -13,10 +13,17 @@
 }
 
 .wrapperTitle {
+  position: absolute;
+  top: 1.5em;
+  left: max(calc((100vw - 1440px) / 2), 20px);
+
   display: flex;
   justify-content: space-between;
+  max-width: 1440px;
+  width: 100%;
 
   @media (max-width: 650px) {
+    position: static;
     flex-direction: column;
   }
 }

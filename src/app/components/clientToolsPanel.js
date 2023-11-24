@@ -13,17 +13,14 @@ export default function ClientToolsPanel({
   sizeMeta,
 }) {
   const [opened, setOpened] = useState(false);
-
+  const handleClick = useCallback(() => setOpened((v) => !v), []);
   const handlers = useSwipeable({
+    onTap: opened ? undefined : handleClick,
     onSwipedUp: () => setOpened(true),
     onSwipedDown: () => setOpened(false),
     delta: 5,
     preventScrollOnSwipe: true,
   });
-
-  const handleClick = useCallback(() => {
-    setOpened((v) => !v);
-  }, []);
 
   return (
     <section
@@ -31,13 +28,16 @@ export default function ClientToolsPanel({
         opened ? styles.textWrapperOpened : ''
       }`}
     >
-      <span {...handlers} className={styles.swipe} />
+      <span
+        {...handlers}
+        className={`${styles.swipe} ${opened ? '' : styles.swipeClosed}`}
+      />
       <button className={styles.button} onClick={handleClick} />
       <ClientToggle active={state} onChange={onChange} />
       {sizeMeta}
       {state === 'imgproxy' && (
         <>
-          <p className={styles.text}>Try different sets of imgproxy options:</p>
+          <p className={styles.text}>Try some presets of imgproxy options:</p>
           <Options options={options} preset={preset} />
         </>
       )}
