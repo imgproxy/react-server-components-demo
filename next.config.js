@@ -4,7 +4,8 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'apod.nasa.gov',
+        // hostname: 'apod.nasa.gov',
+        hostname: 'live.staticflickr.com',
       },
     ],
   },

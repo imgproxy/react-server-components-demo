@@ -43,13 +43,3 @@ export const IMGPROXY_OPTIONS = {
 export const formatDay = (date) => {
   return date.toISOString().split('T')[0];
 };
-
-export const getDays = () => {
-  const dates = [];
-  for (let i = 0; i < 7; i++) {
-    const newDate = new Date();
-    newDate.setDate(newDate.getDate() - i);
-    dates.push(formatDay(newDate));
-  }
-  return dates;
-};

@@ -20,7 +20,7 @@ export default function ClientImageSection({
   urlImgproxy,
   title,
   copyright,
-  activeDay,
+  activeIndex,
   preset,
 }) {
   const ref = useRef();
@@ -60,12 +60,12 @@ export default function ClientImageSection({
     <section className={styles.imgSection}>
       <ul className={styles.list}>
         {thumbnails.map((t) => (
-          <li key={t.date}>
+          <li key={t.url}>
             <Link
               className={`${styles.link} ${
-                t.date === activeDay ? styles.linkActive : ''
+                t.index === activeIndex ? styles.linkActive : ''
               }`}
-              href={`/day/${t.date}?preset=${preset}`}
+              href={`/image/${t.index + 1}?preset=${preset}`}
             >
               <img className={styles.linkImg} src={t.url} alt={t.title} />
             </Link>

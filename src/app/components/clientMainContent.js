@@ -10,7 +10,7 @@ export default function MainContent({
   title,
   copyright,
   options,
-  activeDay,
+  activeIndex,
   sizeMeta,
   preset,
   thumbnails,
@@ -28,7 +28,7 @@ export default function MainContent({
         preset={preset}
       />
       <ClientImageSection
-        activeDay={activeDay}
+        activeIndex={activeIndex}
         state={active}
         thumbnails={thumbnails}
         refNi={ref}
