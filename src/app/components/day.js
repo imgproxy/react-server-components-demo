@@ -30,6 +30,7 @@ export default async function Day({ value, preset: maybePreset }) {
     );
 
   const cutData = res
+    .filter((item) => item.hdurl)
     .map((item) => {
       return {
         date: item.date,
@@ -40,7 +41,8 @@ export default async function Day({ value, preset: maybePreset }) {
     })
     .reverse();
 
-  const currentDayUrl = cutData.find((item) => item.date === value);
+  const currentDayUrl =
+    cutData.find((item) => item.date === value) || cutData[0];
   const preset = maybePreset ? maybePreset : 'format_webp';
   const imgproxyUrl = getImgproxyUrl(
     currentDayUrl.url,
