@@ -37,7 +37,7 @@ export default function ClientToolsPanel({
       {sizeMeta}
       {state === 'imgproxy' && (
         <>
-          <p className={styles.text}>Try some presets of imgproxy options:</p>
+          <p className={styles.text}>Apply one of the imgproxy features:</p>
           <Options options={options} preset={preset} />
         </>
       )}

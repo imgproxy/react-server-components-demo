@@ -5,8 +5,8 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'React Server Components imgproxy demo',
-  description: 'React Server Components imgproxy demo',
+  title: 'Optimize images on the fly with Next.js and imgproxy: demo',
+  description: 'Optimize images on the fly with Next.js and imgproxy',
 };
 
 export const viewport = {

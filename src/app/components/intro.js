@@ -8,7 +8,7 @@ export default async function Intro() {
     <section className={styles.wrapper}>
       <div className={styles.wrapperTitle}>
         <h1 className={styles.mainTitle}>
-          React Server Components imgproxy demo
+          Optimize images on the fly with Next.js and imgproxy: demo
         </h1>
         <a
           className={styles.source}
@@ -25,53 +25,126 @@ export default async function Intro() {
         </a>
       </div>
       <div className={styles.textWrapper}>
-        <h2 className={styles.title}>TLDR;</h2>
+        <h2 className={styles.title}>
+          Demo for an open source library to optimize images easily with
+          imgproxy
+        </h2>
         <p className={styles.intro}>
-          The demo showcases how <strong>imgproxy</strong> can help to process
-          images on the fly using 60+ build in options in comparison to{' '}
-          <strong>next/image</strong>.
+          This OSS client library facilitates faster collaboration with
+          imgproxy, a blazing fast and secure image processing tool. The demo
+          will show how easy it is now.
+        </p>
+        <h2 className={styles.title}>
+          Process images faster and safer: imgproxy
+        </h2>
+        <p className={styles.intro}>
+          imgproxy is a standalone server for blazing fast and secure image
+          processing. Built with a focus on developer productivity, imgproxy
+          resizes and processes images on the fly while saving storage and SaaS
+          costs. The tool is available in the free open source version and a Pro
+          version with priority support and advanced features—a couple of them,
+          like Custom watermarks and Gradient, are included in this demo.
         </p>
         <p className={styles.intro}>
-          You can find{' '}
-          <a target="_blank" rel="noreferrer noopener" href={REPO_URL}>
-            the source code
-          </a>{' '}
-          on GitHub and try it on your own.
-        </p>
-        <h2 className={styles.title}>What is imgproxy?</h2>
-        <p className={styles.intro}>
-          Image processing plays a crucial role in web development, particularly
-          in optimizing images for improved performance and user experience.{' '}
-          <strong>
-            imgproxy is a standalone server that is fast and secure, designed
-            specifically for resizing and converting remote images
-          </strong>
-          . The core principles of imgproxy are simplicity, speed, and security.
-        </p>
-        <h2 className={styles.title}>What the demo?</h2>
-        <p className={styles.intro}>
-          The demo demonstrates how both React Server Components and imgproxy
-          can collaborate to <strong>process images on the fly</strong>, such as
-          generating thumbnails and applying watermarks. The demo showcases a
-          selection of images that undergo processing using both next/image and
-          imgproxy. <strong>The image dimensions remain the same</strong> for
-          both image optimization tools, imgproxy uses the default options
-          identical to next/image.
-        </p>
-        <p className={styles.intro}>
-          In the demo, the imgproxy section only highlights a small fraction of
-          the available options with imgproxy. With imgproxy pro you can also
-          keep original image URLs secret by encoding it. You can see all
-          options in the{' '}
+          Learn more about imgproxy:{' '}
           <a
             className={styles.link}
-            href="https://docs.imgproxy.net/usage/processing"
+            href="https://imgproxy.net"
             rel="noreferrer noopener"
             target="_blank"
           >
-            imgproxy docs
+            https://imgproxy.net
           </a>
-          . We welcome any feedback and suggestions you may have.
+        </p>
+        <h2 className={styles.title}>Build image processing easily: library</h2>
+        <p className={styles.intro}>
+          This JavaScript library facilitates integration with imgproxy and
+          helps create URLs for requests to imgproxy. You no longer need to
+          remember all the parameters and manually write out all the secret key
+          names: the library automatically uses your ENV variables and provides
+          a generated link to the processed image as output.
+        </p>
+        <p className={styles.intro}>
+          <a
+            className={styles.link}
+            href="https://github.com/imgproxy/imgproxy-node"
+            rel="noreferrer noopener"
+            target="_blank"
+          >
+            View the source on GitHub
+          </a>{' '}
+          to build your own image processing pipeline
+        </p>
+        <h2 className={styles.title}>
+          Watch image processing on the fly: demo
+        </h2>
+        <p className={styles.intro}>
+          The demo showcases a selection of images taken from the open source
+          NASA resource. You can apply to them some image processing features
+          like thumbnail generation and watermarks using React’s next/image and
+          imgproxy in parallel and see what happens in the code underneath.
+          imgproxy uses the default options identical to the next/image, so the
+          image dimensions remain the same for both image optimization tools.
+        </p>
+        <p className={styles.intro}>
+          In the demo, we highlight just a few imgproxy processing options (the
+          tool has{' '}
+          <a
+            className={styles.link}
+            href="https://imgproxy.net/features/"
+            rel="noreferrer noopener"
+            target="_blank"
+          >
+            over 60 features
+          </a>
+          .)
+        </p>
+        <p className={styles.intro}>
+          The demo is built with the help of Next.js and React Server
+          Components.
+        </p>
+        <h2 className={styles.title}>
+          Build your library with Evil Martians: customer projects
+        </h2>
+        <p className={styles.intro}>
+          This library is built and regularly maintained by the{' '}
+          <a
+            className={styles.link}
+            href="https://evilmartians.com"
+            rel="noreferrer noopener"
+            target="_blank"
+          >
+            Evil Martians
+          </a>{' '}
+          team. In total, our portfolio includes our own 100+ popular open
+          source and Open Core projects and plugins, libraries and APIs
+          developed and tailored specifically for our clients&apos; needs.
+        </p>
+        <p className={styles.intro}>
+          Learn more about{' '}
+          <a
+            className={styles.link}
+            href="https://github.com/imgproxy/imgproxy-rails"
+            rel="noreferrer noopener"
+            target="_blank"
+          >
+            the open source library
+          </a>{' '}
+          to integrate imgproxy to Ruby on Rails projects.
+        </p>
+        <p className={styles.intro}>
+          Drop us a line at{' '}
+          <a
+            className={styles.link}
+            href="mailto:surrender@evilmartians.com?subject=suggestions to improve the library imgproxy-node"
+            rel="noreferrer noopener"
+            target="_blank"
+          >
+            surrender@evilmartians.com
+          </a>{' '}
+          if you have any feedback and suggestions to improve the library, or
+          let us know if you need any help with building your own tool to
+          integrate with any required framework or coding language.
         </p>
       </div>
     </section>
