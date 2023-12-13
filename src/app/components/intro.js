@@ -26,27 +26,23 @@ export default async function Intro() {
       </div>
       <div className={styles.textWrapper}>
         <h2 className={styles.title}>
-          Demo for an open source library to optimize images easily with
-          imgproxy
+          Demo for an OSS library to help use imgproxy for images optimization
         </h2>
         <p className={styles.intro}>
-          This OSS client library facilitates faster collaboration with
-          imgproxy, a blazing fast and secure image processing tool. The demo
-          will show how easy it is now.
+          This OSS library facilitates faster collaboration with imgproxy, a
+          blazing fast and secure image processing tool. The demo shows how easy
+          it is.
         </p>
         <h2 className={styles.title}>
           Process images faster and safer: imgproxy
         </h2>
         <p className={styles.intro}>
-          imgproxy is a standalone server for blazing fast and secure image
-          processing. Built with a focus on developer productivity, imgproxy
-          resizes and processes images on the fly while saving storage and SaaS
-          costs. The tool is available in the free open source version and a Pro
-          version with priority support and advanced features—a couple of them,
+          imgproxy resizes and processes images on the fly and has OSS and Pro
+          versions with priority support and advanced features—a couple of them,
           like Custom watermarks and Gradient, are included in this demo.
         </p>
         <p className={styles.intro}>
-          Learn more about imgproxy:{' '}
+          Learn more:{' '}
           <a
             className={styles.link}
             href="https://imgproxy.net"
@@ -58,11 +54,10 @@ export default async function Intro() {
         </p>
         <h2 className={styles.title}>Build image processing easily: library</h2>
         <p className={styles.intro}>
-          This JavaScript library facilitates integration with imgproxy and
-          helps create URLs for requests to imgproxy. You no longer need to
-          remember all the parameters and manually write out all the secret key
-          names: the library automatically uses your ENV variables and provides
-          a generated link to the processed image as output.
+          This library helps create URLs for requests to imgproxy. You no longer
+          need to remember all the secret key names: the library automatically
+          uses your ENV variables and provides a generated link to the processed
+          image as output.
         </p>
         <p className={styles.intro}>
           <a
@@ -73,18 +68,15 @@ export default async function Intro() {
           >
             View the source on GitHub
           </a>{' '}
-          to build your own image processing pipeline
+          to build your own image processing pipeline.
         </p>
         <h2 className={styles.title}>
           Watch image processing on the fly: demo
         </h2>
         <p className={styles.intro}>
-          The demo showcases a selection of images taken from the open source
-          NASA resource. You can apply to them some image processing features
-          like thumbnail generation and watermarks using React’s next/image and
-          imgproxy in parallel and see what happens in the code underneath.
-          imgproxy uses the default options identical to the next/image, so the
-          image dimensions remain the same for both image optimization tools.
+          In the demo, you can apply features like thumbnail generation and
+          watermarks to a selection of images, using React’s next/image and
+          imgproxy in parallel.
         </p>
         <p className={styles.intro}>
           In the demo, we highlight just a few imgproxy processing options (the
@@ -97,7 +89,7 @@ export default async function Intro() {
           >
             over 60 features
           </a>
-          .)
+          ).
         </p>
         <p className={styles.intro}>
           The demo is built with the help of Next.js and React Server
@@ -107,7 +99,7 @@ export default async function Intro() {
           Build your library with Evil Martians: customer projects
         </h2>
         <p className={styles.intro}>
-          This library is built and regularly maintained by the{' '}
+          This library is built by the{' '}
           <a
             className={styles.link}
             href="https://evilmartians.com"
@@ -116,35 +108,21 @@ export default async function Intro() {
           >
             Evil Martians
           </a>{' '}
-          team. In total, our portfolio includes our own 100+ popular open
-          source and Open Core projects and plugins, libraries and APIs
-          developed and tailored specifically for our clients&apos; needs.
-        </p>
-        <p className={styles.intro}>
-          Learn more about{' '}
-          <a
-            className={styles.link}
-            href="https://github.com/imgproxy/imgproxy-rails"
-            rel="noreferrer noopener"
-            target="_blank"
-          >
-            the open source library
-          </a>{' '}
-          to integrate imgproxy to Ruby on Rails projects.
+          team. Our portfolio includes 100+ popular open source and Open Core
+          projects and plugins, libraries and APIs developed and tailored to our
+          clients&apos; needs.
         </p>
         <p className={styles.intro}>
           Drop us a line at{' '}
           <a
             className={styles.link}
-            href="mailto:surrender@evilmartians.com?subject=suggestions to improve the library imgproxy-node"
+            href="mailto:surrender@evilmartians.com?subject=I need your help"
             rel="noreferrer noopener"
             target="_blank"
           >
             surrender@evilmartians.com
           </a>{' '}
-          if you have any feedback and suggestions to improve the library, or
-          let us know if you need any help with building your own tool to
-          integrate with any required framework or coding language.
+          if you need our help too.
         </p>
       </div>
     </section>
