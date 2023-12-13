@@ -63,19 +63,23 @@
 }
 
 p + .title {
-  margin-top: 30px;
+  margin-top: 20px;
 
   @media (max-width: 650px) {
     margin-top: 15px;
   }
 }
 
+.intro {
+  font-size: 14px;
+}
+
 .intro + .intro {
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 .resource {
-  margin-top: 40px;
+  margin-top: 30px;
   font-size: 12px;
   font-style: italic;
 
