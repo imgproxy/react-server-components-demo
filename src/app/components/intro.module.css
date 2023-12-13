@@ -75,6 +75,16 @@ p + .title {
   margin-top: 15px;
 }
 
+.resource {
+  margin-top: 40px;
+  font-size: 12px;
+  font-style: italic;
+
+  @media (max-width: 768px) {
+    margin-top: 20px;
+  }
+}
+
 .link {
   text-decoration: none;
   color: #c7417b;

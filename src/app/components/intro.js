@@ -124,6 +124,18 @@ export default async function Intro() {
           </a>{' '}
           if you need our help too.
         </p>
+        <p className={styles.resource}>
+          Images taken from the{' '}
+          <a
+            className={styles.link}
+            href="https://www.nasa.gov/image-of-the-day/"
+            rel="noreferrer noopener"
+            target="_blank"
+          >
+            open source NASA resource
+          </a>
+          .
+        </p>
       </div>
     </section>
   );
