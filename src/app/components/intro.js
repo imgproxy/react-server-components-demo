@@ -8,7 +8,7 @@ export default async function Intro() {
     <section className={styles.wrapper}>
       <div className={styles.wrapperTitle}>
         <h1 className={styles.mainTitle}>
-          Optimize images on the fly with Next.js and imgproxy: demo
+          Demo for an OSS library to help use imgproxy for images optimization
         </h1>
         <a
           className={styles.source}
@@ -25,9 +25,6 @@ export default async function Intro() {
         </a>
       </div>
       <div className={styles.textWrapper}>
-        <h2 className={styles.title}>
-          Demo for an OSS library to help use imgproxy for images optimization
-        </h2>
         <p className={styles.intro}>
           This OSS library facilitates faster collaboration with imgproxy, a
           blazing fast and secure image processing tool. The demo shows how easy
