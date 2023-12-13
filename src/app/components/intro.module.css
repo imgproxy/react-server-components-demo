@@ -16,11 +16,10 @@
   position: absolute;
   top: 1.5em;
   left: max(calc((100vw - 1440px) / 2), 20px);
-
   display: flex;
   justify-content: space-between;
   max-width: 1440px;
-  width: 100%;
+  width: calc(100vw - 40px);
 
   @media (max-width: 650px) {
     position: static;
