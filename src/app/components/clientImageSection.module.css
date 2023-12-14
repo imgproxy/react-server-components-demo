@@ -6,7 +6,7 @@
   padding-right: 30px;
   padding-left: 30px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1199px) {
     width: 100%;
     padding-right: 0;
     padding-left: 0;
@@ -16,11 +16,11 @@
 .list {
   display: flex;
   justify-content: center;
-  margin-top: 5px;
   gap: 10px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1199px) {
     order: 2;
+    margin-top: 5px;
   }
 }
 
@@ -53,7 +53,7 @@
   width: 500px;
   min-height: 250px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1199px) {
     order: 1;
     width: 100%;
     min-height: 150px;
@@ -85,7 +85,7 @@
   position: relative !important;
   width: 100%;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1199px) {
     width: inherit;
   }
 }
@@ -101,7 +101,7 @@
   backdrop-filter: blur(5px);
   font-style: italic;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1199px) {
     font-size: 12px;
   }
 }

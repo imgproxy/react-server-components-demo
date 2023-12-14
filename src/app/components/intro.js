@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import styles from './intro.module.css';
-
-const REPO_URL = 'https://github.com/imgproxy/react-server-components-demo';
+import { REPO_URL } from '../util/common';
 
 export default async function Intro() {
   return (

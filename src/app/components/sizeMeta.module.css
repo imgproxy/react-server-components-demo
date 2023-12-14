@@ -9,7 +9,7 @@
   border-radius: 2px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1199px) {
   .wrapper {
     width: 100%;
     background-color: rgba(223, 228, 235, 0.7);

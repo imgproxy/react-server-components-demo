@@ -11,7 +11,7 @@
     rgb(255, 255, 255) 70% 100%
   );
 
-  @media (max-width: 768px) {
+  @media (max-width: 1199px) {
     padding-bottom: 30vh;
     background: none;
     background-color: #f2f1f5;
@@ -22,7 +22,27 @@
   display: flex;
   max-width: 1440px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1199px) {
     flex-direction: column;
   }
+}
+
+.source {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: fit-content;
+  font-size: 12px;
+  text-decoration: none;
+  opacity: 0.6;
+  transition-duration: 0.3s;
+  transition-property: opacity;
+
+  @media (max-width: 1199px) {
+    display: none;
+  }
+}
+
+.source:hover {
+  opacity: 1;
 }

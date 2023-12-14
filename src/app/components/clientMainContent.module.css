@@ -4,7 +4,7 @@
   padding-top: 105px;
   padding-bottom: 20px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1199px) {
     width: 100%;
     padding-top: 20px;
   }

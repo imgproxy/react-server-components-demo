@@ -48,7 +48,7 @@
   white-space: pre-wrap;
   overflow-x: scroll;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1199px) {
     background-color: rgba(223, 228, 235, 0.7);
     backdrop-filter: blur(5px);
   }

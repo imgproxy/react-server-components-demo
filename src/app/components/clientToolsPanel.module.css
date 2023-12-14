@@ -1,7 +1,7 @@
 .textWrapper {
   width: 35%;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1199px) {
     position: fixed;
     top: 70vh;
     left: 0;
@@ -19,7 +19,7 @@
 }
 
 .textWrapperOpened {
-  @media (max-width: 768px) {
+  @media (max-width: 1199px) {
     top: 30dvh;
     height: 70dvh;
     overflow-y: scroll;
@@ -29,7 +29,7 @@
 .button {
   display: none;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1199px) {
     position: absolute;
     top: 10px;
     left: 50%;
