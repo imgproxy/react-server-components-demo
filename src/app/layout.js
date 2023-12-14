@@ -7,7 +7,8 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'Demo for an OSS library to help use imgproxy for images optimization',
+  title:
+    'imgproxy-node demo: a helper library for more easily constructing imgproxy URLs',
   description: 'Optimize images on the fly with Next.js and imgproxy',
 };
 
