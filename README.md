@@ -18,4 +18,4 @@ imgproxy can be used to provide a fast and secure way to _get rid of all the ima
 
 This is a demo demonstrating the use of imgproxy through rect server components.
 
-You can view the demo by clicking here https://react-server-components-demo.vercel.app/
+You can view the demo by clicking here https://imgproxy-next-demo.vercel.app/
